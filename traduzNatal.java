@@ -5,7 +5,7 @@ public class traduzNatal {
         public static void traducao(String lingua){
             String traducao = "";
             switch (traducao) {
-                case (portugues):
+                case ():
                     
                     break;
             
