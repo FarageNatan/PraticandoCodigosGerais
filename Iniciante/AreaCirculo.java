@@ -1,4 +1,4 @@
-import java.io.IOException;
+package Iniciante;
 import java.util.*;
  
 public class AreaCirculo { // Nome da classe corrigido

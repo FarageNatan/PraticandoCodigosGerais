@@ -1,3 +1,4 @@
+package Iniciante;
 import java.util.Scanner;
 
 public class ExtremamenteBasico {
