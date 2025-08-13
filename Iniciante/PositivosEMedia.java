@@ -15,7 +15,7 @@ public class PositivosEMedia {
             if(valores[j] > 0){
                 soma += valores[j];
                 positivos++;
-            }
+            }   
         }
         media = soma / positivos;
         System.out.println(positivos + " valores positivos");
