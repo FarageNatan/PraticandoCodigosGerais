@@ -63,4 +63,32 @@ public class Lista {
         }
         return resp;
     }
+
+    //implemente um método que retorna a soma dos elementos contidos na mesma
+    public int SomaElementosLista(){
+        int soma = 0;
+        for(int i = 0; i < vetorLista.length; i++){
+            soma += vetorLista[i];
+        }
+        return soma;
+    }
+
+    public int maiorElementoLista()throws Exception{
+        if(contador == 0) throw new Exception("Vetor vazio"); 
+        int maior = vetorLista[0];
+        for(int i = 0; i < vetorLista.length; i++){
+            if(vetorLista[i] > maior){
+                maior = vetorLista[i];
+            }
+        }
+        return maior;
+    }
+
+    public int[] trocarOrdemLista(){
+        int[] ordemInvertida = new int[vetorLista.length];
+        for(int i = 0; i < vetorLista.length; i++){
+            ordemInvertida[i] = vetorLista[contador - i - 1];
+        }
+        return ordemInvertida;
+    }
 }
