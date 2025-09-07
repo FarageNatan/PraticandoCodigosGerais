@@ -117,14 +117,26 @@ public class ImplementandoLista{
         int tamanhoVetor = sc.nextInt();
         
         Lista lista = new Lista(tamanhoVetor);
-    
-        for(int i = 0; i < tamanhoVetor; i++){
-            System.out.println("Preencher vetor com numero: ");
-            int num = sc.nextInt();
-            lista.InserirInicio(num);
+        
+        // O loop agora vai até a metade do tamanho do vetor
+        // porque cada iteração insere dois elementos (um no início e um no fim)
+        for (int i = 0; i < tamanhoVetor / 2; i++) {
+            System.out.println("Preencher vetor com o número para o início: ");
+            int numInicio = sc.nextInt();
+            lista.InserirInicio(numInicio);
+
+            System.out.println("Preencher vetor com o número para o fim: ");
+            int numFim = sc.nextInt();
+            lista.InserirFim(numFim);
+        }
+
+        // Se o tamanho do vetor for ímpar, insere o último elemento no início
+        if (tamanhoVetor % 2 != 0) {
+            System.out.println("Preencher vetor com o último número: ");
+            int ultimoNum = sc.nextInt();
+            lista.InserirInicio(ultimoNum);
         }
 
         lista.mostrarElementos();
-        
-    }
+        }
 }
