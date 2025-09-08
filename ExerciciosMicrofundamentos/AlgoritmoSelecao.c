@@ -7,20 +7,12 @@ void swap(int i, int menor, int array[]){
     array[menor] = temp;
 }
 
-int tamanhoVetor(int array[]){
-    int contador = 0;
-    for(int i = 0; array[i] != '\0'; i++){
-        contador++;
-    }
-    return contador;
-}
 
 void ordenacaoSelecao(int array[]){
-    int tamVetor = tamanhoVetor(array);
     int contarComp = 0;
-    for(int i = 0; i < (tamVetor - 1); i++){
+    for(int i = 0; i < 8; i++){
         int menor = i;
-        for(int j = (i + 1); j < tamVetor; j++){
+        for(int j = (i + 1); j < 8; j++){
             contarComp++;
             if(array[menor] > array[j]){
                 menor = j;
