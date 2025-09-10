@@ -37,7 +37,7 @@ public class BubbleSortOtimizado {
                 }
             }
         }
-        System.out.println("Ele fez " + contador + " comparacoes");
+        System.out.println("Ele fez " + contador + " comparacoes " + fezMov);
     }
 
     public static void main(String[] args) {
