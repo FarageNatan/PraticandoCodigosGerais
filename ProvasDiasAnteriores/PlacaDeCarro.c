@@ -38,65 +38,50 @@ char* lerPlaca(){
     return placaCarro;
 }
 
-bool ehLetra(char* placa, int tamanho){
-    bool isLetra = false;
-    for(int i = 0; i < tamanho; i++){
-        if(placa[i] >= 'A' && placa[i] <= 'Z'){
-            isLetra = true;
-        }
-    }
-    return isLetra;
+
+bool ehLetra(char caracter) {
+    return (caracter >= 'A' && caracter <= 'Z');
 }
 
-bool ehNumero(char* placa, int tamanho){
-    bool isNumero = false;
-    for(int i = 0; i < tamanho; i++){
-        if(placa[i] >= '0' && placa[i] <= '9'){
-            isNumero = true;
-        }
-    }
-    return isNumero;
+bool ehDigito(char caracter) {
+    return (caracter >= '0' && caracter <= '9');
 }
 
 int conferePlaca(char* placa, int tamanho){
-    bool letra = ehLetra;
-    bool num = ehNumero;
-    int tipoPlaca;
-    if(tamanho == 8){
-        for(int i = 0; i < 3; i++){
-            if(placa[i] == letra){
-                tipoPlaca = 1;
-            }else{
+   int tipoPlaca = 0;
+    if (tamanho == 8) {
+        tipoPlaca = 1;
+        for (int i = 0; i < 3; i++) {
+            if (!ehLetra(placa[i])) {
+                tipoPlaca = 0;
+                i = 3; 
+            }
+        }
+        if (tipoPlaca == 1) {
+            if (placa[3] != '-') {
+                tipoPlaca = 0;
+            } else {
+                for (int i = 4; i < 8; i++) {
+                    if (!ehDigito(placa[i])) {
+                        tipoPlaca = 0;
+                        i = 8;
+                    }
+                }
+            }
+        }
+    } else if (tamanho == 7) {
+        tipoPlaca = 2;
+        for (int j = 0; j < 3; j++) {
+            if (!ehLetra(placa[j])) {
+                tipoPlaca = 0;
+                j = 3;
+            }
+        }
+        if (tipoPlaca == 2) {
+            if (!ehDigito(placa[3]) || !ehLetra(placa[4]) || !ehDigito(placa[5]) || !ehDigito(placa[6])) {
                 tipoPlaca = 0;
             }
         }
-        if(placa[3] == '-'){
-            tipoPlaca = 1;
-        }else{
-            tipoPlaca = 0;
-        }
-        for(int j = 4; j < tamanho; j++){
-            if(placa[j] == num){
-                tipoPlaca = 1;
-            }else{
-                tipoPlaca = 0;
-            }
-        }
-    }else if(tamanho == 7){
-        for(int i = 0; i < 3; i++){
-            if(placa[i] == letra){
-                tipoPlaca = 2;
-            }else{
-                tipoPlaca = 0;
-            }
-        }
-        if(placa[3] == num && placa[4] == letra && placa[5] == num && placa[6] == num){
-            tipoPlaca = 2;
-        }else{
-            tipoPlaca = 0;
-        }
-    }else{
-        tipoPlaca = 0;
     }
     return tipoPlaca;
 }
