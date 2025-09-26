@@ -1,5 +1,6 @@
 package ExerciciosDoLab;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public class DiferentesQuicks {
@@ -23,6 +24,7 @@ public class DiferentesQuicks {
         }
         if(esq < j) quicksortMeio(array, esq, j);
         if(i < dir) quicksortMeio(array, i, dir);
+
     }
 
     public static void quicksortFirstPivo(int[] array, int esq, int dir){
@@ -42,6 +44,7 @@ public class DiferentesQuicks {
         }
         if(esq < j) quicksortFirstPivo(array, esq, j);
         if(i < dir) quicksortFirstPivo(array, i, dir);
+
     }
 
     public static void quicksortLastPivo(int[] array, int esq, int dir){
@@ -61,10 +64,12 @@ public class DiferentesQuicks {
         }
         if(esq < j) quicksortFirstPivo(array, esq, j);
         if(i < dir) quicksortFirstPivo(array, i, dir);
+
     }
 
     public static void quicksortRandomPivo(int[] array, int esq, int dir){
-        int i = esq, j = dir, pivo = array[];
+        int i = esq, j = dir;
+        int indiciePivo = esq + (int)(Math.random() * (dir - esq + 1)), pivo = array[indiciePivo];
         while(i <= j){
             while(array[i] < pivo){
                 i++;
@@ -78,10 +83,10 @@ public class DiferentesQuicks {
                 j--;
             }
         }
-        if(esq < j) quicksortFirstPivo(array, esq, j);
-        if(i < dir) quicksortFirstPivo(array, i, dir);
-    }
+        if(esq < j) quicksortRandomPivo(array, esq, j);
+        if(i < dir) quicksortRandomPivo(array, i, dir);
 
+    }
 
     /* a < b < c
        a < c < b
@@ -91,6 +96,7 @@ public class DiferentesQuicks {
        c < b < a */ 
     public static void quicksortMedianOfThree(int[] array, int esq, int dir){
         int primeiro = array[esq], ultimo = array[dir], meio = array[(esq + dir) / 2];
+
         if(primeiro < ultimo && ultimo < meio){
             array[(esq + dir) / 2] = ultimo;
             array[dir] = meio;
@@ -109,6 +115,7 @@ public class DiferentesQuicks {
             array[esq] = ultimo;
             array[dir] = primeiro;
         }//Ordenando o primeiro, meio e ultimo elemento do array
+
         int i = esq, j = dir, pivo = array[(esq + dir) / 2];
         while(i <= j){
             while(array[i] < pivo){
@@ -123,13 +130,10 @@ public class DiferentesQuicks {
                 j--;
             }
         }
-        if(esq < j) quicksortFirstPivo(array, esq, j);
-        if(i < dir) quicksortFirstPivo(array, i, dir);
+        
+        if(esq < j) quicksortMedianOfThree(array, esq, j);
+        if(i < dir) quicksortMedianOfThree(array, i, dir);
     }
-
-
-
-
 
     public static void swap(int[] array, int i, int j){
         int temp = array[i];
@@ -142,7 +146,11 @@ public class DiferentesQuicks {
         // for(int i = 0; i < array.length; i++){
         //     array[i] = sc.nextInt();
         // }
+        long inicio = new Date().getTime();
         quicksortFirstPivo(array, 0, array.length - 1);
+        long fim = new Date().getTime();
+        double tempo = fim - inicio / 1000000; //em ms
+        System.out.println(tempo + " ms");
         for(int j = 0; j < array.length; j++){
             System.out.print(array[j] + " ");
         }
