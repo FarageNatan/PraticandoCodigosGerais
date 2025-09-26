@@ -1,3 +1,5 @@
+# -----HANDS ON 4 -------
+
 /*Projetar o primeiro nome e o último nome dos atores de sexo feminino;*/
 A = σgender = 'F'(actors)
 π first_name, last_name (A)
@@ -24,4 +26,22 @@ MOV_DIR = num ⨝ director_id = id (directors)
 /*Projetar o gênero, o ranking (nota) médio, mínimo e máximo dos filmes do gênero.*/
 GEN_MOV = (movies_genres) ⨝ movie_id = id (movies)
 γ genre;avg(rank) → Medio, min (rank) → Minimo , max(rank) → Maximo (GEN_MOV)
+
+# -----HANDS ON 5 -------
+
+/*Projetar o primeiro nome e o último nome dos atores que são diretores;*/
+A = π first_name, last_name ( actors )
+B = π first_name, last_name ( directors )
+A ∩ B
+/*Projetar o primeiro nome e o último nome dos atores que não são diretores;*/
+A = π first_name, last_name ( actors )
+B = π first_name, last_name ( directors )
+A - B
+/*Projetar o primeiro nome e o último nome dos atores e diretores;*/
+A = π first_name, last_name ( actors )
+B = π first_name, last_name ( directors )
+A ∪ B
+
+
+
 
