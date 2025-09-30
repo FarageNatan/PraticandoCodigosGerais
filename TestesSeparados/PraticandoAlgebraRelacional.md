@@ -42,7 +42,7 @@ A = π first_name, last_name ( actors )
 B = π first_name, last_name ( directors )
 A ∪ B
 
-# ----- HANDS ON 7 -------
+# ----- HANDS ON 7 SQL-------
 /*Projetar o primeiro nome e o último nome dos atores de sexo feminino;*/
 SELECT first_name, last_name
 FROM actors
@@ -106,5 +106,43 @@ INNER JOIN
 GROUP BY
     A.genre;
 
+# ----- EXERCICIOS CHAT SQL-------
+/*Projetar o primeiro nome e o último nome dos atores de sexo masculino.*/
+SELECT first_name, last_name
+FROM actors
+WHERE gender = 'M';
+/*Projetar o nome dos filmes lançados antes do ano 1980.*/
+SELECT name
+FROM movies
+WHERE year < 1980;
+/*Projetar o nome do filme e o gênero a que ele pertence*/
+SELECT A.name, B.genre
+FROM movies as A join movies_genres as B ON A.id = B.movie_id
+/*Projetar o nome do filme, nome do diretor e o ano, apenas para filmes dirigidos após 2010.*/
+SELECT A.name, A.year, B.first_name, B.last_name
+FROM movies as A JOIN movies_directors as C ON A.id = C.movie_id
+JOIN directors as B ON B.id = C.director_id
+WHERE A.year > 2000
+/*Projetar o nome do ator e todos os filmes em que ele participou no papel de “Narrator” (narrador).*/
+SELECT A.first_name, A.last_name, B.role
+FROM actors as A JOIN roles as B ON B.actor_id = A.id
+WHERE B.role = 'Narrator'
+/*Projetar o nome do diretor e o nome do ator para cada filme em comum (filmes que o diretor dirigiu e o ator participou).*/
+SELECT DISTINCT
+       CONCAT(d.first_name, ' ', d.last_name) AS Diretor,
+       CONCAT(a.first_name, ' ', a.last_name) AS Ator,
+       m.name AS Filme
+FROM movies AS m
+JOIN movies_directors AS md ON m.id = md.movie_id
+JOIN directors AS d ON md.director_id = d.id
+JOIN roles AS r ON m.id = r.movie_id
+JOIN actors AS a ON r.actor_id = a.id
+ORDER BY Diretor, Ator, Filme;
+/*Projetar o gênero e a quantidade de atores que participaram de filmes desse gênero.*/
 
+/*Projetar o nome do filme e o ranking (nota) apenas para filmes cujo ranking seja menor que 5.*/
+
+/*Projetar o nome do diretor e o gênero mais frequente que ele dirigiu (dica: usar GROUP BY e COUNT).*/
+
+/*Projetar o gênero e a média de ano de lançamento dos filmes desse gênero.*/
 
