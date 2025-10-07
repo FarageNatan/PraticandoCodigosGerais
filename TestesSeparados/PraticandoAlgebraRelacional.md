@@ -146,3 +146,55 @@ ORDER BY Diretor, Ator, Filme;
 
 /*Projetar o gênero e a média de ano de lançamento dos filmes desse gênero.*/
 
+# ----- EXERCICIOS CHAT Algebra Relacional-------
+Liste os nomes dos filmes de gênero 'Comedy'
+
+A = movies_genres ⨝ movie_id = id (movies)
+B = σgenre = 'Comedy'(A)
+πname(B)
+
+Liste o nome e o ano de todos os filmes com rank maior que 8.
+
+A = σrank > 8 (movies)
+πname, year (A)
+
+Liste os nomes dos atores do sexo feminino.
+
+A = σgender = 'F'(actors)
+pi first_name, last_name (A)
+
+Liste o nome do filme e o nome do diretor de todos os filmes lançados no ano 2000.
+
+A = σyear = 2000 (movies)
+B = ρidDiretor ← id (directors)
+C = (B) ⨝ idDiretor = director_id (movies_directors)
+D = (C) ⨝ movie_id = id (A)
+πname, first_name, last_name (D)
+
+Liste o nome dos filmes em que um ator chamado 'Tom Hanks' participou.
+
+
+
+Liste o nome dos diretores e o gênero dos filmes que eles dirigiram.
+
+
+
+Liste os nomes dos atores que participaram em mais de um filme.
+
+
+
+(Use projeção, junção e depois elimine duplicatas repetidas para contar participações).
+
+
+
+Liste os nomes dos filmes e todos os atores que participaram no papel de 'lead' (protagonista).
+
+
+
+Liste o nome do ator e do diretor para cada filme em comum (filmes que o ator participou e o diretor dirigiu).
+
+
+
+Liste o gênero e a quantidade de filmes diferentes pertencentes a esse gênero.
+
+
