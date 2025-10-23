@@ -37,14 +37,26 @@ class ArvoreB{
     private boolean pesquisar(int x){
 
     }
-    private void caminharCentral(){
-
+    private void caminharCentral(No i){
+        if(i != null){
+            caminharCentral(i.esq);
+            System.out.println(i.elemento + " ");
+            caminharCentral(i.dir);
+        }
     }
-    private void caminharPos(){
-
+    private void caminharPos(No i){
+        if(i != null){
+            caminharPos(i.esq);
+            caminharPos(i.dir);
+            System.out.println(i.elemento + " ");
+        }
     }
-    private void caminharPre(){
-
+    private void caminharPre(No i){
+        if(i != null){
+            System.out.println(i.elemento + " ");
+            caminharPre(i.esq);
+            caminharPre(i.dir);
+        }
     }
     private void remover(int x){
 
