@@ -1,5 +1,8 @@
 package ExerciciosMicrofundamentos;
 
+import java.util.Random;
+import java.util.Scanner;
+
 class No{
     int elemento;
     No esq, dir;
@@ -26,7 +29,7 @@ class ArvoreB{
         raiz = inserir(x, raiz);
     }
 
-    private void inserirPai(int x) throws Exception{
+    public void inserirPai(int x) throws Exception{
         if(raiz == null){
             raiz = new No(x);
         }else if(x < raiz.elemento){
@@ -44,7 +47,7 @@ class ArvoreB{
     }
 
     public void remover(int x){
-
+        
     }
 
     public void caminharPre(){
@@ -57,6 +60,11 @@ class ArvoreB{
 
     public void caminharPos(){
         caminharPos(raiz);
+    }
+
+    public int alturaArvore(No i) throws Exception{
+        int altura = alturaArvore(raiz, 0);
+        return altura;
     }
 
     //----- Funcoes ------
@@ -130,6 +138,22 @@ class ArvoreB{
         }
     }
 
+    private int alturaArvore(No i, int altura) throws Exception{
+        if(i != null){
+            int alturaEsq = alturaArvore(i.esq, altura + 1);
+            int alturaDir = alturaArvore(i.dir, altura + 1);
+            if(alturaDir > alturaEsq){
+                altura = alturaDir;
+            }else if(alturaEsq > alturaDir){
+                altura = alturaEsq;
+            }
+        }
+        return altura;
+    }
+
+    private exercicioDois(No i){
+        
+    }
 
 }
 
