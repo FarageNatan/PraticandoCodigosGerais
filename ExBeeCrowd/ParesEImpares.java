@@ -21,14 +21,14 @@ public class ParesEImpares {
 
          Arrays.sort(impares, 0, imp);
 
-        // for (int i = 0; i < n; i++) {
-        //     int valores = sc.nextInt();
-        //     if (valores % 2 == 0) {
-        //         pares[par++] = valores;
-        //     } else {
-        //         impares[imp++] = valores;
-        //     }
-        // }
+        for (int i = 0; i < n; i++) {
+            int valores = sc.nextInt();
+            if (valores % 2 == 0) {
+                pares[par++] = valores;
+            } else {
+                impares[imp++] = valores;
+            }
+        }
 
         // // Ordena pares em ordem crescente (bubble sort)
         // for (int i = par - 1; i > 0; i--) {
@@ -40,13 +40,13 @@ public class ParesEImpares {
         // }
 
         // Ordena ímpares em ordem decrescente (bubble sort)
-        for (int i = imp - 1; i > 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (impares[j] < impares[j + 1]) {
-                    swap(impares, j, j + 1);
-                }
-            }
-        }
+        // for (int i = imp - 1; i > 0; i--) {
+        //     for (int j = 0; j < i; j++) {
+        //         if (impares[j] < impares[j + 1]) {
+        //             swap(impares, j, j + 1);
+        //         }
+        //     }
+        // }
 
         for (int i = 0; i < par; i++) {
             System.out.println(pares[i]);
