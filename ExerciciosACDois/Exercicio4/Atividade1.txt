@@ -1,0 +1,8 @@
+A) O rótulo main no programa representa uma posição de memória.
+
+B) O uso de rótulos facilita a manutenção e leitura do código porque pelo label utilizado já conseguimos identificar diretamente a posição
+de memória que será acessada a partir daquele label.
+
+C) O símbolo é apenas um facilitador para leitura, serve para facilitar a leitura e manutenção do código, criado pelo próprio programador.
+Por outro lado, o endereço numérico representa a posição exata da memória em que está localizado a instrução, este número que é usado pela 
+CPU durante a execução, especialmente em instruções de salto.
