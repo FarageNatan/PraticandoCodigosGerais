@@ -5,12 +5,12 @@ public class Amigos {
     
     public static String[] listaAtual(){
       String atualLista = entrada.nextLine();
-      return atualLista.split(" "); //Divide a linha separando por espaço
+      return atualLista.split(" ");
     }
 
     public static String[] listaNova(){
         String novaLista = entrada.nextLine();
-        return novaLista.split(" "); //Divide a linha separando por espaço
+        return novaLista.split(" "); 
     }
 
     public static String sugestaoAmigo(){
@@ -29,29 +29,28 @@ public class Amigos {
         String[] listaCompleta;
         int posicao = -1;
 
-        if(amigo != null){ //se houver sugestao de amigo
+        if(amigo != null){
             for(int i = 0; i < tamAtual; i++){
                 if(atual[i].equals(amigo)){
                     posicao = i;
                     i = tamAtual;
                 }
             }
-        } // procura a posicao do amigo sugerido na lista atual
+        }
 
-        //Insere a nova lista antes do amigo sugerido
         if(posicao != -1){
             listaCompleta = new String[tamAtual + tamNova];
 
             for(int i = 0; i < posicao; i++){
-                listaCompleta[i] = atual[i]; //insere a parte antes do amigo
+                listaCompleta[i] = atual[i];
             }
 
             for(int i = 0; i < tamNova; i++){
-                listaCompleta[i] = nova[i]; //insere a nova lista
+                listaCompleta[i] = nova[i];
             }
 
             for(int i = 0; i < tamNova; i++){
-                listaCompleta[tamNova + 1] = atual[i]; //resto da lista 
+                listaCompleta[tamNova + 1] = atual[i]; 
             }
         }else{ //nao encontrou a sugestao na lista
             listaCompleta = new String[tamAtual + tamNova];
