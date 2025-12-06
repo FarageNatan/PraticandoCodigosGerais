@@ -1,20 +1,13 @@
 main:
-    #Realiza a leitura de um numero e armazena em a0
-    #Move o valor armazenado em a0 para o registrador t1
+  # Le um numero do teclado e armazena em a0
     addi t0, zero, 4
     ecall
-    mv t1, a0
-
-loop:
-    #Soma 2 ao valor contido no registrador a0
+  # Move o numero somado para o registrador s1 e soma 2 ao valor de a0
+    mv s1, a0
     addi a0, a0, 2
-    #Imprime o resultado da soma
+  # Imprima o valor de a0 na tela
     addi t0, zero, 1
     ecall
-    #t1 == 0 encerra
-    #senao volta para o inicio
-    beq t1, zero, fim
-    j main
-
-fim:
-    ret
+  # Va novamente para o main e recomece a execucao
+  beq s1, zero, ret
+  j main
